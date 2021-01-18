@@ -24,10 +24,6 @@ app.get("/siege-rank", async (req, res) => {
   res.send(finalText);
 });
 
-app.get("*", (req, res) => {
-  res.status(404);
-})
-
 const port = process.env.PORT || 2424;
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
