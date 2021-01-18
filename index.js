@@ -14,7 +14,7 @@ app.use(morgan("tiny"));
 app.use(cors());
 app.use(express.json());
 
-app.get("/", async (req, res) => {
+app.get("/siege-rank", async (req, res) => {
   const api_res = await API.getSesonalStats("Ace.Honey", "pc");
   const stats = api_res.seasons[Object.keys(api_res.seasons)[0]].regions.ncsa[0];
   const { rank_text, mmr, next_rank_mmr, max_rank_text, max_mmr } = stats;
@@ -23,6 +23,10 @@ app.get("/", async (req, res) => {
   const finalText = `Rank: ${rank_text} | MMR: ${mmr} | Next Rank MMR: ${next_rank_mmr} | Highest Rank: ${max_rank_text} | Highest MMR: ${max_mmr} | More stats: https://acehunter.tv/r6stats`;
   res.send(finalText);
 });
+
+app.get("*", (req, res) => {
+  res.status(404);
+})
 
 const port = process.env.PORT || 2424;
 app.listen(port, () => {
