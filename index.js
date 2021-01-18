@@ -20,8 +20,8 @@ app.get("/siege-rank", async (req, res) => {
   const { rank_text, mmr, next_rank_mmr, max_rank_text, max_mmr } = stats;
   // const lastUpdated = DateTime.fromISO(api_res.last_updated, { zone: "America/Chicago" }).setLocale("en-US").toLocaleString(DateTime.DATETIME_SHORT)
 
-  const finalText = `Rank: ${rank_text} | MMR: ${mmr} | Next Rank MMR: ${next_rank_mmr} | Highest Rank: ${max_rank_text} | Highest MMR: ${max_mmr} | More stats: https://acehunter.tv/r6stats`;
-  res.send(finalText);
+  const finalText = `Rank: ${rank_text} | MMR: ${mmr} | Next Rank MMR: ${next_rank_mmr} | More stats: https://acehunter.tv/r6stats`;
+  return res.send(finalText);
 });
 
 const port = process.env.PORT || 2424;
