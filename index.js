@@ -14,8 +14,8 @@ app.use(morgan("tiny"));
 app.use(cors());
 app.use(express.json());
 
-app.get("/siege-rank", async (req, res) => {
-  const api_res = await API.getSesonalStats("Ace.Honey", "pc");
+app.get("/siege-rank/:username", async (req, res) => {
+  const api_res = await API.getSesonalStats(req.params.username, "pc");
   const stats = api_res.seasons[Object.keys(api_res.seasons)[0]].regions.ncsa[0];
   const { rank_text, mmr, next_rank_mmr, max_rank_text, max_mmr } = stats;
   // const lastUpdated = DateTime.fromISO(api_res.last_updated, { zone: "America/Chicago" }).setLocale("en-US").toLocaleString(DateTime.DATETIME_SHORT)
